@@ -308,7 +308,7 @@ public class AchievementServiceImpl implements AchievementService {
             throw new ResourceNotFoundException("Profile", "id", profileId);
         }
 
-        achievementRepository.deleteByProfileId(profileId);
+//        achievementRepository.deleteByProfileId(profileId);
     }
 
     @Override

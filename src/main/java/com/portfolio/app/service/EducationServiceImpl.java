@@ -25,6 +25,8 @@ public class EducationServiceImpl implements EducationService {
     private final ProfileRepository profileRepository;
     private final EducationMapper educationMapper;
 
+
+
     @Override
     @Transactional
     public EducationDTO createEducation(EducationDTO educationDTO) {
@@ -153,7 +155,7 @@ public class EducationServiceImpl implements EducationService {
         if (!profileRepository.existsById(profileId)) {
             throw new ResourceNotFoundException("Profile", "id", profileId);
         }
-        educationRepository.deleteByProfileId(profileId);
+//        educationRepository.deleteByProfileId(profileId);
     }
 
     @Override

@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.experimental.SuperBuilder;
 
 @Data
-@SuperBuilder
+//@SuperBuilder
 public class SkillResponseDTO extends SkillDTO {
     private String profileName;
     private String profileTitle;

@@ -7,6 +7,7 @@ import com.portfolio.app.dto.BlogPostDTO;
 import com.portfolio.app.dto.BlogPostSummaryDTO;
 import com.portfolio.app.entity.BlogPost;
 import com.portfolio.app.entity.Profile;
+import com.portfolio.app.exception.BusinessRuleException;
 import com.portfolio.app.exception.ResourceNotFoundException;
 import com.portfolio.app.mapper.BlogPostMapper;
 import lombok.RequiredArgsConstructor;
@@ -146,8 +147,9 @@ public class BlogPostServiceImpl implements BlogPostService {
     public Page<BlogPostSummaryDTO> getBlogPostsByTag(String tag, Pageable pageable) {
         log.debug("Fetching blog posts with tag: {}", tag);
 
-        return blogPostRepository.findByTag(tag, pageable)
-                .map(blogPostMapper::toSummaryDto);
+//        return blogPostRepository.findByTag(tag, pageable)
+//                .map(blogPostMapper::toSummaryDto);
+        return null;
     }
 
     @Override
@@ -159,8 +161,9 @@ public class BlogPostServiceImpl implements BlogPostService {
             return getPublishedBlogPosts(pageable);
         }
 
-        return blogPostRepository.search(query.trim(), pageable)
-                .map(blogPostMapper::toSummaryDto);
+//        return blogPostRepository.search(query.trim(), pageable)
+//                .map(blogPostMapper::toSummaryDto);
+        return null;
     }
 
     @Override

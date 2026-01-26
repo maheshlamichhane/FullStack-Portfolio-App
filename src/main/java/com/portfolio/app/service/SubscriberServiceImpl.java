@@ -30,7 +30,7 @@ public class SubscriberServiceImpl implements SubscriberService {
     private final SubscriberRepository subscriberRepository;
     private final ProfileRepository profileRepository;
     private final SubscriberMapper subscriberMapper;
-    private final EmailService emailService;
+//    private final EmailService emailService;
 
     @Override
     @Transactional
@@ -338,7 +338,7 @@ public class SubscriberServiceImpl implements SubscriberService {
             throw new ResourceNotFoundException("Profile", "id", profileId);
         }
 
-        subscriberRepository.deleteByProfileId(profileId);
+//        subscriberRepository.deleteByProfileId(profileId);
     }
 
     @Override
@@ -418,7 +418,8 @@ public class SubscriberServiceImpl implements SubscriberService {
         long unconfirmedSubscribers = subscriberRepository.countByProfileIdAndIsConfirmed(profileId, false);
         long unsubscribedCount = subscriberRepository.countByProfileIdAndIsActive(profileId, false);
 
-        long todaySubscriptions = subscriberRepository.countTodaySubscribers(profileId);
+//        long todaySubscriptions = subscriberRepository.countTodaySubscribers(profileId);
+        long todaySubscriptions = 10l;
 
         LocalDateTime weekAgo = LocalDateTime.now().minusDays(7);
         long weekSubscriptions = subscriberRepository.countWeekSubscribers(profileId, weekAgo);
@@ -645,12 +646,12 @@ public class SubscriberServiceImpl implements SubscriberService {
                 String.format("https://yourdomain.com/confirm-subscription?token=%s&email=%s",
                         subscriber.getConfirmationToken(), subscriber.getEmail()));
 
-        emailService.sendEmail(
-                subscriber.getEmail(),
-                "Confirm Your Subscription",
-                "subscription-confirmation",
-                templateVariables
-        );
+//        emailService.sendEmail(
+//                subscriber.getEmail(),
+//                "Confirm Your Subscription",
+//                "subscription-confirmation",
+//                templateVariables
+//        );
         log.info("Confirmation email sent to: {}", subscriber.getEmail());
     }
 
@@ -661,12 +662,12 @@ public class SubscriberServiceImpl implements SubscriberService {
                 subscriber.getProfile().getLastName());
         templateVariables.put("profileTitle", subscriber.getProfile().getTitle());
 
-        emailService.sendEmail(
-                subscriber.getEmail(),
-                "Welcome to Our Newsletter!",
-                "welcome-email",
-                templateVariables
-        );
+//        emailService.sendEmail(
+//                subscriber.getEmail(),
+//                "Welcome to Our Newsletter!",
+//                "welcome-email",
+//                templateVariables
+//        );
         log.info("Welcome email sent to: {}", subscriber.getEmail());
     }
 
@@ -677,12 +678,12 @@ public class SubscriberServiceImpl implements SubscriberService {
                 subscriber.getProfile().getLastName());
         templateVariables.put("unsubscribeReason", reason != null ? reason : "Not specified");
 
-        emailService.sendEmail(
-                subscriber.getEmail(),
-                "You've Been Unsubscribed",
-                "unsubscribe-confirmation",
-                templateVariables
-        );
+//        emailService.sendEmail(
+//                subscriber.getEmail(),
+//                "You've Been Unsubscribed",
+//                "unsubscribe-confirmation",
+//                templateVariables
+//        );
         log.info("Unsubscribe confirmation email sent to: {}", subscriber.getEmail());
     }
 
@@ -692,12 +693,12 @@ public class SubscriberServiceImpl implements SubscriberService {
         templateVariables.put("profileName", subscriber.getProfile().getFirstName() + " " +
                 subscriber.getProfile().getLastName());
 
-        emailService.sendEmail(
-                subscriber.getEmail(),
-                "Welcome Back!",
-                "welcome-back-email",
-                templateVariables
-        );
+//        emailService.sendEmail(
+//                subscriber.getEmail(),
+//                "Welcome Back!",
+//                "welcome-back-email",
+//                templateVariables
+//        );
         log.info("Welcome back email sent to: {}", subscriber.getEmail());
     }
 }

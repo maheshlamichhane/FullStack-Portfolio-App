@@ -35,9 +35,10 @@ public class VisitorAnalyticsServiceImpl implements VisitorAnalyticsService {
 
     @Override
     public VisitorAnalyticsResponseDTO trackVisit(VisitorAnalyticsRequestDTO analyticsDTO) {
-        Profile profile = profileRepository.findById(analyticsDTO.getProfileId())
-                .orElseThrow(() -> new ResourceNotFoundException(PROFILE_NOT_FOUND + analyticsDTO.getProfileId()));
+//        Profile profile = profileRepository.findById(analyticsDTO.getProfileId());
+//                .orElseThrow(() -> new ResourceNotFoundException(PROFILE_NOT_FOUND + analyticsDTO.getProfileId()));
 
+        Profile profile = null;
         // Check if this is a unique visit (by IP and day)
         boolean isUnique = true;
         if (analyticsDTO.getIpAddress() != null) {
@@ -69,12 +70,17 @@ public class VisitorAnalyticsServiceImpl implements VisitorAnalyticsService {
     }
 
     @Override
-    @Transactional(readOnly = true)
     public VisitorAnalyticsResponseDTO getAnalyticsById(Long id) {
-        VisitorAnalytics analytics = analyticsRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(ANALYTICS_NOT_FOUND + id));
-        return analyticsMapper.toDto(analytics);
+        return null;
     }
+
+//    @Override
+//    @Transactional(readOnly = true)
+//    public VisitorAnalyticsResponseDTO getAnalyticsById(Long id) {
+//        VisitorAnalytics analytics = analyticsRepository.findById(id)
+//                .orElseThrow(() -> new ResourceNotFoundException(ANALYTICS_NOT_FOUND + id));
+//        return analyticsMapper.toDto(analytics);
+//    }
 
     @Override
     @Transactional(readOnly = true)
@@ -269,11 +275,11 @@ public class VisitorAnalyticsServiceImpl implements VisitorAnalyticsService {
 
     @Override
     public void deleteAnalytics(Long id) {
-        if (!analyticsRepository.existsById(id)) {
-            throw new ResourceNotFoundException(ANALYTICS_NOT_FOUND + id);
-        }
-        analyticsRepository.deleteById(id);
-        log.info("Deleted analytics record with id: {}", id);
+//        if (!analyticsRepository.existsById(id)) {
+//            throw new ResourceNotFoundException(ANALYTICS_NOT_FOUND + id);
+//        }
+//        analyticsRepository.deleteById(id);
+//        log.info("Deleted analytics record with id: {}", id);
     }
 
     @Override

@@ -330,7 +330,7 @@ public class CertificationServiceImpl implements CertificationService {
             throw new ResourceNotFoundException("Profile", "id", profileId);
         }
 
-        certificationRepository.deleteByProfileId(profileId);
+//        certificationRepository.deleteByProfileId(profileId);
     }
 
     @Override

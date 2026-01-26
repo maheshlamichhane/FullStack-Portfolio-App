@@ -77,9 +77,9 @@ public interface SubscriberRepository extends JpaRepository<Subscriber, Long> {
     long countByProfileIdAndSubscriptionSource(Long profileId, String subscriptionSource);
 
     // Count subscribers who subscribed today
-    @Query("SELECT COUNT(s) FROM Subscriber s WHERE s.profile.id = :profileId AND " +
-            "DATE(s.subscribedAt) = CURRENT_DATE")
-    long countTodaySubscribers(@Param("profileId") Long profileId);
+//    @Query("SELECT COUNT(s) FROM Subscriber s WHERE s.profile.id = :profileId AND " +
+//            "DATE(s.subscribedAt) = CURRENT_DATE")
+//    long countTodaySubscribers(@Param("profileId") Long profileId);
 
     // Count subscribers who subscribed this week
     @Query("SELECT COUNT(s) FROM Subscriber s WHERE s.profile.id = :profileId AND " +

@@ -6,7 +6,7 @@ import lombok.experimental.SuperBuilder;
 import java.time.LocalDateTime;
 
 @Data
-@SuperBuilder
+//@SuperBuilder
 public class SubscriberResponseDTO extends SubscriberDTO {
     private String profileName;
     private String profileTitle;

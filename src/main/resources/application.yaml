@@ -4,7 +4,7 @@ spring:
   application:
     name: portfolio-api
   datasource:
-    url: postgresql://localhost:5432/ad_db
+    url: jdbc:postgresql://localhost:5432/ad_db
     username: ad_java
     password: ad_java
   jpa:

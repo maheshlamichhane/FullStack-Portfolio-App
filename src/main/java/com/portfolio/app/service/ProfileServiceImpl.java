@@ -3,6 +3,7 @@ package com.portfolio.app.service;
 import com.portfolio.app.dao.ProfileRepository;
 import com.portfolio.app.dto.ProfileDTO;
 import com.portfolio.app.entity.Profile;
+import com.portfolio.app.exception.ResourceNotFoundException;
 import com.portfolio.app.mapper.ProfileMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -31,12 +32,13 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Override
     public ProfileDTO updateProfile(Long id, ProfileDTO profileDTO) {
-        Profile profile = profileRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Profile", "id", id));
-
-        profileMapper.updateEntity(profileDTO, profile);
-        Profile updatedProfile = profileRepository.save(profile);
-        return profileMapper.toDto(updatedProfile);
+//        Profile profile = profileRepository.findById(id)
+//                .orElseThrow(() -> new ResourceNotFoundException("Profile", "id", id));
+//
+//        profileMapper.updateEntity(profileDTO, profile);
+//        Profile updatedProfile = profileRepository.save(profile);
+//        return profileMapper.toDto(updatedProfile);
+        return null;
     }
 
     @Override

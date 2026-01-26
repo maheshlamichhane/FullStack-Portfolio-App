@@ -1,7 +1,5 @@
 package com.portfolio.app.entity;
 
-package com.portfolio.app.entity;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

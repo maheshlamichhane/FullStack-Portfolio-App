@@ -29,23 +29,23 @@ public interface BlogPostRepository extends JpaRepository<BlogPost, Long> {
     Page<BlogPost> findByProfileId(Long profileId, Pageable pageable);
 
     // Find posts by tag
-    @Query("SELECT bp FROM BlogPost bp WHERE :tag MEMBER OF bp.tags AND bp.isPublished = true")
-    Page<BlogPost> findByTag(@Param("tag") String tag, Pageable pageable);
+//    @Query("SELECT bp FROM BlogPost bp WHERE :tag MEMBER OF bp.tags AND bp.isPublished = true")
+//    Page<BlogPost> findByTag(@Param("tag") String tag, Pageable pageable);
 
     // Find posts by multiple tags
-    @Query("SELECT bp FROM BlogPost bp WHERE bp.tags IN :tags AND bp.isPublished = true")
-    Page<BlogPost> findByTagsIn(@Param("tags") List<String> tags, Pageable pageable);
+//    @Query("SELECT bp FROM BlogPost bp WHERE bp.tags IN :tags AND bp.isPublished = true")
+//    Page<BlogPost> findByTagsIn(@Param("tags") List<String> tags, Pageable pageable);
 
     // Find featured posts (you can add a featured field to entity if needed)
     @Query("SELECT bp FROM BlogPost bp WHERE bp.isPublished = true ORDER BY bp.viewCount DESC")
     Page<BlogPost> findPopularPosts(Pageable pageable);
 
     // Search posts by title or content
-    @Query("SELECT bp FROM BlogPost bp WHERE " +
-            "(LOWER(bp.title) LIKE LOWER(CONCAT('%', :query, '%')) OR " +
-            "LOWER(bp.content) LIKE LOWER(CONCAT('%', :query, '%'))) AND " +
-            "bp.isPublished = true")
-    Page<BlogPost> search(@Param("query") String query, Pageable pageable);
+//    @Query("SELECT bp FROM BlogPost bp WHERE " +
+//            "(LOWER(bp.title) LIKE LOWER(CONCAT('%', :query, '%')) OR " +
+//            "LOWER(bp.content) LIKE LOWER(CONCAT('%', :query, '%'))) AND " +
+//            "bp.isPublished = true")
+//    Page<BlogPost> search(@Param("query") String query, Pageable pageable);
 
     // Find recent posts
     Page<BlogPost> findByIsPublishedTrueOrderByPublishedAtDesc(Pageable pageable);

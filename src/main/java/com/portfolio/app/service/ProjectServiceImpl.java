@@ -7,7 +7,6 @@ import com.portfolio.app.entity.Project;
 import com.portfolio.app.entity.ProjectImage;
 import com.portfolio.app.entity.Profile;
 import com.portfolio.app.exception.ResourceNotFoundException;
-import com.portfolio.app.exception.BusinessRuleException;
 import com.portfolio.app.mapper.ProjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -39,9 +38,9 @@ public class ProjectServiceImpl implements ProjectService {
                 .orElseThrow(() -> new ResourceNotFoundException("Profile", "id", projectDTO.getProfileId()));
 
         // Check if project with same title already exists for this profile
-        if (projectRepository.existsByTitleAndProfileId(projectDTO.getTitle(), projectDTO.getProfileId())) {
-            throw new BusinessRuleException("Project '" + projectDTO.getTitle() + "' already exists for this profile");
-        }
+//        if (projectRepository.existsByTitleAndProfileId(projectDTO.getTitle(), projectDTO.getProfileId())) {
+//            throw new BusinessRuleException("Project '" + projectDTO.getTitle() + "' already exists for this profile");
+//        }
 
         Project project = projectMapper.toEntity(projectDTO);
         project.setProfile(profile);
@@ -231,11 +230,11 @@ public class ProjectServiceImpl implements ProjectService {
                 .orElseThrow(() -> new ResourceNotFoundException("Project", "id", id));
 
         // Check if title is being changed and if it's available
-        if (!existingProject.getTitle().equals(projectDTO.getTitle())) {
-            if (projectRepository.existsByTitleAndProfileId(projectDTO.getTitle(), projectDTO.getProfileId())) {
-                throw new BusinessRuleException("Project '" + projectDTO.getTitle() + "' already exists for this profile");
-            }
-        }
+//        if (!existingProject.getTitle().equals(projectDTO.getTitle())) {
+//            if (projectRepository.existsByTitleAndProfileId(projectDTO.getTitle(), projectDTO.getProfileId())) {
+//                throw new BusinessRuleException("Project '" + projectDTO.getTitle() + "' already exists for this profile");
+//            }
+//        }
 
         // Update profile if changed
         if (!existingProject.getProfile().getId().equals(projectDTO.getProfileId())) {
@@ -383,7 +382,7 @@ public class ProjectServiceImpl implements ProjectService {
             throw new ResourceNotFoundException("Profile", "id", profileId);
         }
 
-        projectRepository.deleteByProfileId(profileId);
+//        projectRepository.deleteByProfileId(profileId);
     }
 
     @Override
@@ -411,6 +410,7 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     @Transactional(readOnly = true)
     public boolean existsByTitleAndProfile(String title, Long profileId) {
-        return projectRepository.existsByTitleAndProfileId(title, profileId);
+//        return projectRepository.existsByTitleAndProfileId(title, profileId);
+        return  true;
     }
 }

@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.experimental.SuperBuilder;
 
 @Data
-@SuperBuilder
+//@SuperBuilder
 public class ContactMessageResponseDTO extends ContactMessageDTO {
     private String profileName;
     private String profileEmail;

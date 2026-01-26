@@ -54,7 +54,7 @@ public class VisitorAnalyticsMapper {
         dto.setProfileId(analytics.getProfile().getId());
 
         if (analytics.getProfile() != null) {
-            dto.setProfileName(analytics.getProfile().getFullName());
+//            dto.setProfileName(analytics.getProfile().getFullName());
         }
 
         return dto;

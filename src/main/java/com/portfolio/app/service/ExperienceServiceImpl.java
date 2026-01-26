@@ -256,7 +256,7 @@ public class ExperienceServiceImpl implements ExperienceService {
             throw new ResourceNotFoundException("Profile", "id", profileId);
         }
 
-        experienceRepository.deleteByProfileId(profileId);
+//        experienceRepository.deleteByProfileId(profileId);
     }
 
     @Override

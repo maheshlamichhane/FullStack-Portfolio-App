@@ -33,8 +33,8 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
     Page<Project> findByTechnology(@Param("technology") String technology, Pageable pageable);
 
     // Find projects by multiple technologies
-    @Query("SELECT p FROM Project p WHERE p.technologies IN :technologies AND p.isPublished = true")
-    Page<Project> findByTechnologiesIn(@Param("technologies") List<String> technologies, Pageable pageable);
+//    @Query("SELECT p FROM Project p WHERE p.technologies IN :technologies AND p.isPublished = true")
+//    Page<Project> findByTechnologiesIn(@Param("technologies") List<String> technologies, Pageable pageable);
 
     // Search projects by title or description
     @Query("SELECT p FROM Project p WHERE " +

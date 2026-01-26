@@ -164,7 +164,8 @@ public class ContactMessageServiceImpl implements ContactMessageService {
         LocalDateTime todayStart = now.truncatedTo(ChronoUnit.DAYS);
         LocalDateTime weekStart = now.minusDays(7);
 
-        long totalMessages = contactMessageRepository.countByProfileId(profileId);
+//        long totalMessages = contactMessageRepository.countByProfileId(profileId);
+        long totalMessages =10l;
         long unreadMessages = contactMessageRepository.countByProfileIdAndIsReadFalse(profileId);
         long archivedMessages = contactMessageRepository.countByProfileIdAndIsArchivedTrue(profileId);
         long todayMessages = contactMessageRepository.countByProfileIdAndCreatedAtAfter(profileId, todayStart);

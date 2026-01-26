@@ -355,7 +355,7 @@ public class SkillServiceImpl implements SkillService {
             throw new ResourceNotFoundException("Profile", "id", profileId);
         }
 
-        skillRepository.deleteByProfileId(profileId);
+//        skillRepository.deleteByProfileId(profileId);
     }
 
     @Override

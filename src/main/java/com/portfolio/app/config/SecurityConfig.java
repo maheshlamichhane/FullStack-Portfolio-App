@@ -13,6 +13,8 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import java.util.Arrays;
 import java.util.List;
 
+
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -26,19 +28,10 @@ public class SecurityConfig {
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
-                                "/api/v1/profiles/**",
-                                "/api/v1/skills/**",
-                                "/api/v1/projects/**",
-                                "/api/v1/experience/**",
-                                "/api/v1/blog/**",
-                                "/api-docs/**",
-                                "/swagger-ui/**",
-                                "/h2-console/**"
-                        ).permitAll()
-                        .requestMatchers("/api/v1/contact/**").permitAll()
-                        .requestMatchers("/api/v1/admin/**").authenticated()
-                        .anyRequest().authenticated()
+                        .requestMatchers("/**").permitAll()
+//                        .requestMatchers("/api/v1/contact/**").permitAll()
+//                        .requestMatchers("/api/v1/admin/**").authenticated()
+//                        .anyRequest().authenticated()
                 )
                 .headers(headers -> headers
                         .frameOptions(frameOptions -> frameOptions.sameOrigin())
@@ -47,6 +40,8 @@ public class SecurityConfig {
         return http.build();
     }
 
+
+    
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();

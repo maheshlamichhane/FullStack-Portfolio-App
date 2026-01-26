@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.experimental.SuperBuilder;
 
 @Data
-@SuperBuilder
+//@SuperBuilder
 public class SocialMediaResponseDTO extends SocialMediaDTO {
     private String profileName;
     private String profileTitle;
