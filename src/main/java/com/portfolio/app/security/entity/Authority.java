@@ -21,7 +21,7 @@ public class Authority {
 
     @ManyToOne
     @JoinColumn(name = "role_id")
-    private Role role;
+    private Role  role;
 
 
 }

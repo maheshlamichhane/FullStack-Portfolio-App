@@ -1,16 +1,20 @@
 package com.portfolio.app.exception;
 
+import com.portfolio.app.dto.ErrorResponseDTO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
+import tools.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 
-public class CustomBasicAuthenticationEntryPoint implements AuthenticationEntryPoint {
+public class CustomJwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
+
+
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
         LocalDateTime currentTimeStamp = LocalDateTime.now();
@@ -20,11 +24,13 @@ public class CustomBasicAuthenticationEntryPoint implements AuthenticationEntryP
         response.setHeader("it-company-error-reason", "Authentication failed");
         response.setStatus(HttpStatus.UNAUTHORIZED.value());
         response.setContentType("application/json;charset=UTF-8");
+
+
         // Construct the JSON response
-        String jsonResponse =
-                String.format("{\"timestamp\": \"%s\", \"status\": %d, \"error\": \"%s\", \"message\": \"%s\", \"path\": \"%s\"}",
-                        currentTimeStamp, HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase(),
-                        message, path);
-        response.getWriter().write(jsonResponse);
+        ErrorResponseDTO errorResponseDTO = new ErrorResponseDTO();
+        errorResponseDTO.setMessage(message);
+        errorResponseDTO.setCode(HttpStatus.BAD_REQUEST.value());
+
+        response.getWriter().write(new ObjectMapper().writeValueAsString(errorResponseDTO));
     }
 }

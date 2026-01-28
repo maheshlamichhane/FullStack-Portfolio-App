@@ -40,7 +40,7 @@ public class Customer {
             joinColumns = @JoinColumn(name = "customer_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    private Set<Role> roles = new HashSet<>();
+    private Set<Role> rolePrevs = new HashSet<>();
 
 
     @ManyToMany(fetch = FetchType.EAGER)
